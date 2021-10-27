@@ -1,13 +1,13 @@
 import React from 'react';
 import Version from './components/Version';
-import coffeetime from './apis/CoffeeTime';
+import scheduler from './apis/Scheduler';
 
 class App extends React.Component {
 
   state = { serverVersion: null, clientVersion: null }
 
   readServerVersion = async (term) => {
-    const response = await coffeetime.get('/version');
+    const response = await scheduler.get('/version');
 
     const { version } = require('../package.json');
 
@@ -27,12 +27,12 @@ class App extends React.Component {
         <div className="ui inverted vertical masthead center aligned segment">
           <div className="ui text container">
             <h1 className="ui inverted header">
-              Coffee time!
+              Scheduler!
             </h1>
             <div className="ui big image">
               <img src="logo.png" alt="TODO" />
             </div>
-            <h2>Fancy a coffee with someone new?</h2>
+            <h2>Office scheduler</h2>
           </div>
           <div>
             <div className="ui huge primary button">Let's go! <i className="right arrow icon"></i></div>
