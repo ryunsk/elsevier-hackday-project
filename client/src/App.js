@@ -2,6 +2,7 @@ import React from 'react';
 import Version from './components/Version';
 import scheduler from './apis/Scheduler';
 import ScheduledTable from './components/ScheduledTable';
+import SchedulerMenu from './components/SchedulerMenu';
 import 'semantic-ui-css/semantic.min.css';
 import {
   Container,
@@ -12,8 +13,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 class App extends React.Component {
 
-  state = { serverVersion: null, clientVersion: null, activeItem: 'home', value: null }
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  state = { serverVersion: null, clientVersion: null }
 
   readServerVersion = async (term) => {
     const response = await scheduler.get('/version');
@@ -31,23 +31,9 @@ class App extends React.Component {
   }
 
   render() {
-    const { activeItem } = this.state
     return (
       <Container>
-        <Menu pointing secondary>
-          <Menu.Item as='a'
-            name='home'
-            active={activeItem === 'home'}
-            onClick={this.handleItemClick}>
-            Home
-          </Menu.Item>
-          <Menu.Item as='a'
-            name='schedule'
-            active={activeItem === 'schedule'}
-            onClick={this.handleItemClick}>
-            Schedule
-          </Menu.Item>
-        </Menu>
+        <SchedulerMenu />
 
         <Calendar />
 
