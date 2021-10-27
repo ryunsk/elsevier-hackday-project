@@ -1,7 +1,7 @@
-package elsevier.hackday.coffeetime.resources
+package elsevier.hackday.officescheduler.resources
 
 import cats.effect.{Blocker, ContextShift, Sync}
-import elsevier.hackday.coffeetime.services.VersionService
+import elsevier.hackday.officescheduler.services.VersionService
 import org.http4s._
 import org.http4s.dsl.Http4sDsl
 import org.http4s.implicits.http4sKleisliResponseSyntaxOptionT

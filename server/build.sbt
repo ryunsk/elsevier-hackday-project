@@ -1,4 +1,4 @@
-name := "coffee-time"
+name := "office-scheduler"
 organization := "elsevier.hackday"
 
 scalaVersion := "2.12.10"
@@ -8,7 +8,7 @@ crossScalaVersions := Seq("2.12.10")
 
 parallelExecution in Test := false
 
-mainClass in assembly := Some("elsevier.hackday.coffeetime.resources.Main")
+mainClass in assembly := Some("elsevier.hackday.officescheduler.resources.Main")
 
 val http4sVersion = "1.0-234-d1a2b53"
 val circeVersion = "0.13.0"
@@ -42,7 +42,7 @@ herokuAppName in Compile := "arcane-beach-48942"
 
 enablePlugins(BuildInfoPlugin)
 
-buildInfoPackage := "elsevier.hackday.coffeetime"
+buildInfoPackage := "elsevier.hackday.officescheduler"
 
 buildInfoKeys := Seq[BuildInfoKey](
   version

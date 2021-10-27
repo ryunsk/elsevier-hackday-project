@@ -1,7 +1,7 @@
-package elsevier.hackday.coffeetime.resources
+package elsevier.hackday.officescheduler.resources
 
 import cats.effect._
-import elsevier.hackday.coffeetime.services.VersionService
+import elsevier.hackday.officescheduler.services.VersionService
 import org.http4s.server.blaze._
 import org.http4s.server.middleware._
 

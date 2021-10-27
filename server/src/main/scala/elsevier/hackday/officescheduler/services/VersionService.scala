@@ -1,6 +1,6 @@
-package elsevier.hackday.coffeetime.services
+package elsevier.hackday.officescheduler.services
 
-import elsevier.hackday.coffeetime.BuildInfo
+import elsevier.hackday.officescheduler.BuildInfo
 
 case class Version(major: Int, minor: Int, patch: Int)
 
