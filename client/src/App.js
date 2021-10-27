@@ -1,7 +1,11 @@
 import React from 'react';
 import Version from './components/Version';
 import scheduler from './apis/Scheduler';
-
+import 'semantic-ui-css/semantic.min.css';
+import {
+  Container,
+  Menu,
+} from 'semantic-ui-react'
 class App extends React.Component {
 
   state = { serverVersion: null, clientVersion: null }
@@ -23,23 +27,19 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="ui container">
-        <div className="ui inverted vertical masthead center aligned segment">
-          <div className="ui text container">
-            <h1 className="ui inverted header">
-              Scheduler!
-            </h1>
-            <div className="ui big image">
-              <img src="logo.png" alt="TODO" />
-            </div>
-            <h2>Office scheduler</h2>
-          </div>
-          <div>
-            <div className="ui huge primary button">Let's go! <i className="right arrow icon"></i></div>
-          </div>
-        </div>
+      <Container>
+        <Menu pointing secondary>
+          <Menu.Item as='a' active>
+            Home
+          </Menu.Item>
+          <Menu.Item as='a'>
+            Careers
+          </Menu.Item>
+        </Menu>
+
         <Version serverVersion={this.state.serverVersion} clientVersion={this.state.clientVersion} />
-      </div>
+      </Container>
+
     );
   }
 }
