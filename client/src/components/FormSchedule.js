@@ -1,6 +1,8 @@
 import React from 'react';
 import { Header, Form, Icon } from 'semantic-ui-react'
 import Swal from 'sweetalert2'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 class FormSchedule extends React.Component {
     constructor(props) {
@@ -18,13 +20,13 @@ class FormSchedule extends React.Component {
         if (this.state.name == '') {
             Swal.fire(
                 'Name field is empty!',
-                '',
+                'Tip: You can press Space or Enter to close this window',
                 'error'
             )
         } else if (this.state.date == '') {
             Swal.fire(
                 'Date field is empty!',
-                '',
+                'Tip: You can press Space or Enter to close this window',
                 'error'
             )
         } else {
@@ -32,7 +34,7 @@ class FormSchedule extends React.Component {
             // alert(this.state.name + ' has been added to the table.');
             Swal.fire(
                 this.state.name + ' has been added to the table.',
-                '',
+                'Tip: You can press Space or Enter to close this window',
                 'success'
             )
             event.preventDefault();
@@ -51,7 +53,7 @@ class FormSchedule extends React.Component {
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group widths='equal'>
                         <Form.Input fluid label='Name' placeholder='Name' name='name' value={this.state.name} onChange={this.handleChange} />
-                        <Form.Input fluid label='Date' placeholder='Date' name='date' value={this.state.date} onChange={this.handleChange} />
+                        <Form.Input fluid label='Date' placeholder='YYYY-MM-DD, Example: 2020-11-19' name='date' value={this.state.date} onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Button >Submit</Form.Button>
                 </Form>
