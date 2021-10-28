@@ -15,5 +15,4 @@ const SchedulerMenu = () =>
         >Schedule</Menu.Item>
     </Menu>
 
-
 export default SchedulerMenu;

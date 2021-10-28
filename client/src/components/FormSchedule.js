@@ -10,10 +10,6 @@ class FormSchedule extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // handleChange(event) {
-    //     this.setState({ name: event.target.value, date: event.target.value });
-    // }
-
     handleChange(event) {
         this.setState({ [event.target.name]: event.target.value });
     }
@@ -26,9 +22,6 @@ class FormSchedule extends React.Component {
     }
 
     render() {
-        // { console.log(this.state.resultDateAndName.concat([['3333-10-29', ['aaaa', 'bbbb']]])) }
-
-        const resultDateAndName = this.props.resultDateAndName
         return (
             <div>
                 <Header as='h3' icon textAlign='center'>

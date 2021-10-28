@@ -21,7 +21,6 @@ class App extends React.Component {
     this.setState({ resultDateAndName: this.state.resultDateAndName.concat(e) })
   }
 
-
   readServerVersion = async (term) => {
     const response = await scheduler.get('/version');
     const { version } = require('../package.json');
