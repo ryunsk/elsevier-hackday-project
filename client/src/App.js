@@ -46,13 +46,6 @@ class App extends React.Component {
           onAddingName={this.handleNameAddition}
         />
 
-        App.js Test: List of Dates: {this.state.resultDateAndName.map(x => x[0]).join(", ")}
-        <br />
-        App.js Test: List of Names: {this.state.resultDateAndName.map(x => x[1].join(", ")).join(", ")}
-        <br />
-        {console.log(this.state.resultDateAndName.concat([['3333-10-29', ['aaaa', 'bbbb']]]))}
-
-
         <ScheduledTable
           resultDateAndName={this.state.resultDateAndName}
         />

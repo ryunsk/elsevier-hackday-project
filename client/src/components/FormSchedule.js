@@ -10,8 +10,12 @@ class FormSchedule extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    // handleChange(event) {
+    //     this.setState({ name: event.target.value, date: event.target.value });
+    // }
+
     handleChange(event) {
-        this.setState({ name: event.target.value, date: event.target.value });
+        this.setState({ [event.target.name]: event.target.value });
     }
 
     handleSubmit(event) {
@@ -34,16 +38,11 @@ class FormSchedule extends React.Component {
 
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group widths='equal'>
-                        <Form.Input fluid label='Name' placeholder='Name' value={this.state.name} onChange={this.handleChange} />
-                        <Form.Input fluid label='Date' placeholder='Date' value={this.state.date} onChange={this.handleChange} />
+                        <Form.Input fluid label='Name' placeholder='Name' name='name' value={this.state.name} onChange={this.handleChange} />
+                        <Form.Input fluid label='Date' placeholder='Date' name='date' value={this.state.date} onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Button >Submit</Form.Button>
                 </Form>
-                Test input Name: {this.state.name}
-                <br />
-                {/* Test input Date: "{this.state.date}" */}
-                <br />
-                Test List of Names (Should be the same as below): {resultDateAndName}
             </div>
         )
     }
