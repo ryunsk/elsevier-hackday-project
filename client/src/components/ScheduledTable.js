@@ -1,10 +1,10 @@
 import React from 'react';
-import { Icon, Label, Menu, Table, Header } from 'semantic-ui-react'
+import { Icon, Table, Header } from 'semantic-ui-react'
 
 const ScheduledTable = () =>
     <div>
         <Header as='h3' icon textAlign='center'>
-            <Icon name='columns' circular />
+            <Icon name='table' circular />
             <Header.Content>Results</Header.Content>
         </Header>
         <Table>

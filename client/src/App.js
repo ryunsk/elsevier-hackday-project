@@ -3,12 +3,11 @@ import Version from './components/Version';
 import scheduler from './apis/Scheduler';
 import ScheduledTable from './components/ScheduledTable';
 import SchedulerMenu from './components/SchedulerMenu';
+import SchedulerCalendar from './components/SchedulerCalendar';
 import 'semantic-ui-css/semantic.min.css';
 import {
   Container,
 } from 'semantic-ui-react'
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
 import FormSchedule from './components/FormSchedule';
 class App extends React.Component {
 
@@ -33,7 +32,6 @@ class App extends React.Component {
     return (
       <Container>
         <SchedulerMenu />
-
         <FormSchedule />
 
         <ScheduledTable />
