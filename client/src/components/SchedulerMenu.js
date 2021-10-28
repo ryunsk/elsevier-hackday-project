@@ -6,6 +6,7 @@ import { Icon, Label, Menu, Table } from 'semantic-ui-react'
 // const { activeItem } = this.state
 const SchedulerMenu = () =>
     <Menu pointing secondary>
+        <Menu.Item header>Office Scheduler</Menu.Item>
         <Menu.Item as='a'
             name='home'
         >Home</Menu.Item>

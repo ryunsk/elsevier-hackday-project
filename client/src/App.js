@@ -6,11 +6,10 @@ import SchedulerMenu from './components/SchedulerMenu';
 import 'semantic-ui-css/semantic.min.css';
 import {
   Container,
-  Menu,
-  Segment
 } from 'semantic-ui-react'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import FormSchedule from './components/FormSchedule';
 class App extends React.Component {
 
   state = { serverVersion: null, clientVersion: null }
@@ -35,9 +34,8 @@ class App extends React.Component {
       <Container>
         <SchedulerMenu />
 
-        <Calendar />
+        <FormSchedule />
 
-        {/* Calendar: Select multiple days */}
         <ScheduledTable />
         <Version serverVersion={this.state.serverVersion} clientVersion={this.state.clientVersion} />
       </Container>
