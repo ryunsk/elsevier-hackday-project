@@ -20,7 +20,6 @@ class ScheduledTable extends React.Component {
                     <Icon name='table' circular />
                     <Header.Content>Results</Header.Content>
                 </Header>
-                {this.renderDataAsTable()}
                 <Table>
                     <Table.Header>
                         <Table.Row>
