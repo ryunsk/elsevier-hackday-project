@@ -15,14 +15,16 @@ class FormSchedule extends React.Component {
     }
 
     handleSubmit(event) {
-        this.props.onAddingName(this.state.name)
+        this.props.onAddingName([[this.state.date, [this.state.name]]])
         alert(this.state.name + ' has been added to the table.');
         event.preventDefault();
-        this.setState({ name: '' }) // Empty out text field after typing it in
+        this.setState({ name: '', date: '' })
     }
 
     render() {
-        const resultNames = this.props.resultNames
+        // { console.log(this.state.resultDateAndName.concat([['3333-10-29', ['aaaa', 'bbbb']]])) }
+
+        const resultDateAndName = this.props.resultDateAndName
         return (
             <div>
                 <Header as='h3' icon textAlign='center'>
@@ -33,15 +35,15 @@ class FormSchedule extends React.Component {
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group widths='equal'>
                         <Form.Input fluid label='Name' placeholder='Name' value={this.state.name} onChange={this.handleChange} />
-                        <Form.Input fluid label='Date' placeholder='Date' />
+                        <Form.Input fluid label='Date' placeholder='Date' value={this.state.date} onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Button >Submit</Form.Button>
                 </Form>
                 Test input Name: {this.state.name}
                 <br />
-                Test input Date: "{this.state.date}"
+                {/* Test input Date: "{this.state.date}" */}
                 <br />
-                Test List of Names (Should be the same as below): {resultNames}
+                Test List of Names (Should be the same as below): {resultDateAndName}
             </div>
         )
     }

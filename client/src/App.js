@@ -12,7 +12,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      serverVersion: null, clientVersion: null, resultDateAndName: [["2021-10-28", ["Steve", "Jon"]], ["2021-10-29", ["Annie", "Shane"]]]
+      serverVersion: null, clientVersion: null, resultDateAndName: [['2021-10-28', ['Steve', 'Jon']], ['2021-10-29', ['Annie', 'Shane']]]
     }
     this.handleNameAddition = this.handleNameAddition.bind(this)
   }
@@ -24,7 +24,6 @@ class App extends React.Component {
 
   readServerVersion = async (term) => {
     const response = await scheduler.get('/version');
-
     const { version } = require('../package.json');
 
     this.setState({
@@ -47,11 +46,12 @@ class App extends React.Component {
           onAddingName={this.handleNameAddition}
         />
 
-        List of Dates: {this.state.resultDateAndName[0][0]}
+        App.js Test: List of Dates: {this.state.resultDateAndName.map(x => x[0]).join(", ")}
         <br />
-        List of Names: {this.state.resultDateAndName[0][1]}
+        App.js Test: List of Names: {this.state.resultDateAndName.map(x => x[1].join(", ")).join(", ")}
         <br />
-        List of Names usingResultArray: {this.state.resultDateAndName}
+        {console.log(this.state.resultDateAndName.concat([['3333-10-29', ['aaaa', 'bbbb']]]))}
+
 
         <ScheduledTable
           resultDateAndName={this.state.resultDateAndName}
