@@ -11,7 +11,7 @@ import {
 import FormSchedule from './components/FormSchedule';
 class App extends React.Component {
 
-  state = { serverVersion: null, clientVersion: null }
+  state = { serverVersion: null, clientVersion: null, inputName: "TestName", inputDate: "2021-10-28", resultDates: ["2021-10-28"], resultNames: ["Steve", "Jon"] }
 
   readServerVersion = async (term) => {
     const response = await scheduler.get('/version');
@@ -32,10 +32,26 @@ class App extends React.Component {
     return (
       <Container>
         <SchedulerMenu />
-        <FormSchedule />
 
-        <ScheduledTable />
-        <Version serverVersion={this.state.serverVersion} clientVersion={this.state.clientVersion} />
+        <FormSchedule
+          inputName={this.state.inputName}
+          inputDate={this.state.inputDate}
+          resultNames={this.state.resultNames}
+          resultDates={this.state.resultDates} />
+
+        <ScheduledTable
+          inputName={this.state.inputName}
+          inputDate={this.state.inputDate}
+          resultNames={this.state.resultNames}
+          resultDates={this.state.resultDates} />
+
+        List of Dates: {this.state.resultDates}
+        <br />
+        List of Names: {this.state.resultNames}
+        <Version
+          serverVersion={this.state.serverVersion}
+          clientVersion={this.state.clientVersion} />
+
       </Container>
     );
   }
