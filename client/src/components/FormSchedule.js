@@ -1,6 +1,6 @@
 import React from 'react';
 import { Header, Form, Icon } from 'semantic-ui-react'
-
+import Swal from 'sweetalert2'
 
 class FormSchedule extends React.Component {
     constructor(props) {
@@ -15,10 +15,29 @@ class FormSchedule extends React.Component {
     }
 
     handleSubmit(event) {
-        this.props.onAddingName([[this.state.date, [this.state.name]]])
-        alert(this.state.name + ' has been added to the table.');
-        event.preventDefault();
-        this.setState({ name: '', date: '' })
+        if (this.state.name == '') {
+            Swal.fire(
+                'Name field is empty!',
+                '',
+                'error'
+            )
+        } else if (this.state.date == '') {
+            Swal.fire(
+                'Date field is empty!',
+                '',
+                'error'
+            )
+        } else {
+            this.props.onAddingName([[this.state.date, [this.state.name]]])
+            // alert(this.state.name + ' has been added to the table.');
+            Swal.fire(
+                this.state.name + ' has been added to the table.',
+                '',
+                'success'
+            )
+            event.preventDefault();
+            this.setState({ name: '', date: '' })
+        }
     }
 
     render() {
