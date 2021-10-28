@@ -3,15 +3,24 @@ import Version from './components/Version';
 import scheduler from './apis/Scheduler';
 import ScheduledTable from './components/ScheduledTable';
 import SchedulerMenu from './components/SchedulerMenu';
-import SchedulerCalendar from './components/SchedulerCalendar';
 import 'semantic-ui-css/semantic.min.css';
 import {
   Container,
 } from 'semantic-ui-react'
 import FormSchedule from './components/FormSchedule';
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      serverVersion: null, clientVersion: null, resultDateAndName: [["2021-10-28", ["Steve", "Jon"]], ["2021-10-29", ["Annie", "Shane"]]]
+    }
+    this.handleNameAddition = this.handleNameAddition.bind(this)
+  }
 
-  state = { serverVersion: null, clientVersion: null, inputName: "TestName", inputDate: "2021-10-28", resultDates: ["2021-10-28"], resultNames: ["Steve", "Jon"] }
+  handleNameAddition(e) {
+    this.setState({ resultDateAndName: this.state.resultDateAndName.concat(e) })
+  }
+
 
   readServerVersion = async (term) => {
     const response = await scheduler.get('/version');
@@ -34,20 +43,18 @@ class App extends React.Component {
         <SchedulerMenu />
 
         <FormSchedule
-          inputName={this.state.inputName}
-          inputDate={this.state.inputDate}
-          resultNames={this.state.resultNames}
-          resultDates={this.state.resultDates} />
+          resultDateAndName={this.state.resultDateAndName}
+          onAddingName={this.handleNameAddition}
+        />
 
-        <ScheduledTable
-          inputName={this.state.inputName}
-          inputDate={this.state.inputDate}
-          resultNames={this.state.resultNames}
-          resultDates={this.state.resultDates} />
-
-        List of Dates: {this.state.resultDates}
+        List of Dates: {this.state.resultDateAndName[0][0]}
         <br />
-        List of Names: {this.state.resultNames}
+        List of Names: {this.state.resultDateAndName[0][1]}
+        <br />
+        List of Names usingResultArray: {this.state.resultDateAndName}
+
+        <ScheduledTable />
+
         <Version
           serverVersion={this.state.serverVersion}
           clientVersion={this.state.clientVersion} />

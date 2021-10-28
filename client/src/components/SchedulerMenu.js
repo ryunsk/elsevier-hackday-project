@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Icon, Label, Menu, Table } from 'semantic-ui-react'
+import React from 'react';
+import { Menu } from 'semantic-ui-react'
 
 // state = { activeItem: 'home', value: null }
 // handleItemClick = (e, { name }) => this.setState({ activeItem: name })
