@@ -53,7 +53,9 @@ class App extends React.Component {
         <br />
         List of Names usingResultArray: {this.state.resultDateAndName}
 
-        <ScheduledTable />
+        <ScheduledTable
+          resultDateAndName={this.state.resultDateAndName}
+        />
 
         <Version
           serverVersion={this.state.serverVersion}

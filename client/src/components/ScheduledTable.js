@@ -2,6 +2,17 @@ import React from 'react';
 import { Icon, Table, Header } from 'semantic-ui-react'
 
 class ScheduledTable extends React.Component {
+    renderDataAsTable() {
+        return this.props.resultDateAndName.map((ourData) => {
+            return (
+                <Table.Row>
+                    <Table.Cell>{ourData[0]}</Table.Cell>
+                    <Table.Cell>{ourData[1].join(", ")}</Table.Cell>
+                </Table.Row>
+            )
+        })
+    }
+
     render() {
         return (
             <div>
@@ -9,6 +20,7 @@ class ScheduledTable extends React.Component {
                     <Icon name='table' circular />
                     <Header.Content>Results</Header.Content>
                 </Header>
+                {this.renderDataAsTable()}
                 <Table>
                     <Table.Header>
                         <Table.Row>
@@ -17,14 +29,7 @@ class ScheduledTable extends React.Component {
                         </Table.Row>
                     </Table.Header>
                     <Table.Body>
-                        <Table.Row>
-                            <Table.Cell>2021-10-28</Table.Cell>
-                            <Table.Cell>Steve, Ben, Martin</Table.Cell>
-                        </Table.Row>
-                        <Table.Row>
-                            <Table.Cell>2021-10-29</Table.Cell>
-                            <Table.Cell>Steve, Ben, Bill</Table.Cell>
-                        </Table.Row>
+                        {this.renderDataAsTable()}
                     </Table.Body>
                 </Table>
             </div>
