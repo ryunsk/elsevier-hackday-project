@@ -1,14 +1,28 @@
 import React from 'react';
 import Version from './components/Version';
-import coffeetime from './apis/CoffeeTime';
-
+import scheduler from './apis/Scheduler';
+import ScheduledTable from './components/ScheduledTable';
+import SchedulerMenu from './components/SchedulerMenu';
+import 'semantic-ui-css/semantic.min.css';
+import {
+  Container,
+} from 'semantic-ui-react'
+import FormSchedule from './components/FormSchedule';
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      serverVersion: null, clientVersion: null, resultDateAndName: [['2021-10-28', ['Steve', 'Jon']], ['2021-10-29', ['Annie', 'Shane']]]
+    }
+    this.handleNameAddition = this.handleNameAddition.bind(this)
+  }
 
-  state = { serverVersion: null, clientVersion: null }
+  handleNameAddition(e) {
+    this.setState({ resultDateAndName: this.state.resultDateAndName.concat(e) })
+  }
 
   readServerVersion = async (term) => {
-    const response = await coffeetime.get('/version');
-
+    const response = await scheduler.get('/version');
     const { version } = require('../package.json');
 
     this.setState({
@@ -23,23 +37,23 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="ui container">
-        <div className="ui inverted vertical masthead center aligned segment">
-          <div className="ui text container">
-            <h1 className="ui inverted header">
-              Coffee time!
-            </h1>
-            <div className="ui big image">
-              <img src="logo.png" alt="TODO" />
-            </div>
-            <h2>Fancy a coffee with someone new?</h2>
-          </div>
-          <div>
-            <div className="ui huge primary button">Let's go! <i className="right arrow icon"></i></div>
-          </div>
-        </div>
-        <Version serverVersion={this.state.serverVersion} clientVersion={this.state.clientVersion} />
-      </div>
+      <Container>
+        <SchedulerMenu />
+
+        <FormSchedule
+          resultDateAndName={this.state.resultDateAndName}
+          onAddingName={this.handleNameAddition}
+        />
+
+        <ScheduledTable
+          resultDateAndName={this.state.resultDateAndName}
+        />
+
+        <Version
+          serverVersion={this.state.serverVersion}
+          clientVersion={this.state.clientVersion} />
+
+      </Container>
     );
   }
 }
