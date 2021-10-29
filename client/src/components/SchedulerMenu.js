@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Modal, Button, Header, Image } from 'semantic-ui-react'
+import { Menu, Modal, Button, Header } from 'semantic-ui-react'
 
 // state = { activeItem: 'home', value: null }
 // handleItemClick = (e, { name }) => this.setState({ activeItem: name })
