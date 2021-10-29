@@ -1,7 +1,7 @@
 package elsevier.hackday.officescheduler.resources
 
 import cats.effect._
-import elsevier.hackday.officescheduler.services.VersionService
+import elsevier.hackday.officescheduler.services.{SchedulerService, VersionService}
 import org.http4s.server.blaze._
 import org.http4s.server.middleware._
 
@@ -17,10 +17,11 @@ object Main extends IOApp {
     val host = if (portParameter == null) "localhost" else "0.0.0.0"
 
     val versionService = new VersionService()
+    val schedulerService = new SchedulerService()
 
     val blockingPool = Executors.newFixedThreadPool(4)
     val blocker = Blocker.liftExecutorService(blockingPool)
-    val routes = new Routes[IO](blocker, versionService)
+    val routes = new Routes[IO](blocker, versionService, schedulerService)
 
     BlazeServerBuilder[IO](global)
       .bindHttp(port, host)
