@@ -8,6 +8,12 @@ import {
   Container,
 } from 'semantic-ui-react'
 import FormSchedule from './components/FormSchedule';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 class App extends React.Component {
   constructor(props) {
     super(props);

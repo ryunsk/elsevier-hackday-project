@@ -17,13 +17,13 @@ class FormSchedule extends React.Component {
     }
 
     handleSubmit(event) {
-        if (this.state.name == '') {
+        if (this.state.name === '') {
             Swal.fire(
                 'Name field is empty!',
                 'Tip: You can press Space or Enter to close this window',
                 'error'
             )
-        } else if (this.state.date == '') {
+        } else if (this.state.date === '') {
             Swal.fire(
                 'Date field is empty!',
                 'Tip: You can press Space or Enter to close this window',
