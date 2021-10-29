@@ -26,6 +26,7 @@ libraryDependencies ++= Seq(
   "org.http4s" %% "http4s-blaze-server" % http4sVersion,
   "org.http4s" %% "http4s-circe" % http4sVersion,
   "io.circe" %% "circe-generic" % circeVersion,
+  "io.circe" %% "circe-literal" % circeVersion,
 
   // JSON
   "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.11.0",

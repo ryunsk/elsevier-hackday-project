@@ -7,6 +7,9 @@ import org.http4s.dsl.Http4sDsl
 import org.http4s.implicits.http4sKleisliResponseSyntaxOptionT
 import org.http4s.server.Router
 import org.http4s.server.staticcontent.resourceServiceBuilder
+import org.http4s.circe._
+import io.circe.generic.auto._
+import io.circe.syntax.EncoderOps
 
 class Routes[F[_] : Sync: ContextShift](blocker: Blocker, versionService: VersionService, schedulerService: SchedulerService) {
 
@@ -18,7 +21,7 @@ class Routes[F[_] : Sync: ContextShift](blocker: Blocker, versionService: Versio
       case GET -> Root / "version" =>
         Ok(versionService.version)
       case GET -> Root / "" =>
-        Ok(schedulerService.data)
+        Ok(schedulerService.userData.asJson)
     }
   }
 
