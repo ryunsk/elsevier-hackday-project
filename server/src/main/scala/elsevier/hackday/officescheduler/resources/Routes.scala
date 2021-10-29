@@ -1,7 +1,7 @@
 package elsevier.hackday.officescheduler.resources
 
 import cats.effect.{Blocker, ContextShift, Sync}
-import elsevier.hackday.officescheduler.services.{SchedulerService, VersionService}
+import elsevier.hackday.officescheduler.services.{SchedulerService, VersionService, UserData}
 import org.http4s._
 import org.http4s.dsl.Http4sDsl
 import org.http4s.implicits.http4sKleisliResponseSyntaxOptionT
@@ -11,7 +11,7 @@ import org.http4s.circe._
 import io.circe.generic.auto._
 import io.circe.syntax.EncoderOps
 
-class Routes[F[_] : Sync: ContextShift](blocker: Blocker, versionService: VersionService, schedulerService: SchedulerService) {
+class Routes[F[_] : Sync : ContextShift](blocker: Blocker, versionService: VersionService, schedulerService: SchedulerService) {
 
   private val apiRoutes: HttpRoutes[F] = {
     val dsl = new Http4sDsl[F] {}
@@ -22,6 +22,14 @@ class Routes[F[_] : Sync: ContextShift](blocker: Blocker, versionService: Versio
         Ok(versionService.version)
       case GET -> Root / "" =>
         Ok(schedulerService.userData.asJson)
+      case POST -> Root / "" =>
+        Ok()
+      //      case POST -> Root / "" =>
+      //        for{
+      //          userData <- req.as[UserData]
+      //          resp <- Ok(UserData(userData).asJson)
+      //        } yield (resp)
+      //    }.orNotFound
     }
   }
 
