@@ -38,7 +38,7 @@ libraryDependencies ++= Seq(
 
 enablePlugins(JavaAppPackaging)
 
-herokuAppName in Compile := "arcane-beach-48942"
+herokuAppName in Compile := "els-hackday"
 
 enablePlugins(BuildInfoPlugin)
 
