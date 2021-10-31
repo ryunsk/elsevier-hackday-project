@@ -9,7 +9,7 @@ class ScheduledTable extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            tableData: []
+            tableData: [['2000-01-01', ['CCC', 'DDD']]]
         }
     }
 
@@ -18,10 +18,18 @@ class ScheduledTable extends React.Component {
 
         scheduler.get('/users')
             .then(console.log("Response data is: "))
-            .then(response => Object.keys(response.data).map(key => arr.push([response.data[key].date, response.data[key].names])))
+            .then(response => {
+                Object.keys(response.data).map(key => arr.push([response.data[key].date, response.data[key].names]));
+                this.setState({ tableData: arr })
+            })
+            // .then(this.setState({ tableData: arr }))
             .then(console.log(arr))
+            .then(console.log(this.state.tableData))
 
-        this.setState({ tableData: arr })
+        // const response = await scheduler.get('/users')
+        // this.setState({
+        //     tableData: Object.keys(response.data).map(key => [response.data[key].date, response.data[key].names])
+        // })
     };
 
     componentDidMount() {
@@ -29,13 +37,13 @@ class ScheduledTable extends React.Component {
     }
 
     renderDataAsTable2() {
-        // response.data[0] = {date:..., names:...} etc for [0], [1]...
-        // would have to do [0].names...
-
         this.state.tableData.map((ourData) => {
+            console.log("TABLE DATA")
+            console.log(ourData)
             return (
                 <Table.Row>
                     <Table.Cell>{ourData[0]}</Table.Cell>
+                    <Table.Cell>{ourData[1].join(", ")}</Table.Cell>
                 </Table.Row>
             )
         })
@@ -69,6 +77,12 @@ class ScheduledTable extends React.Component {
                     <Table.Body>
                         {this.renderDataAsTable()}
                         {this.renderDataAsTable2()}
+
+                        <Table.Row>
+                            <Table.Cell>Static test</Table.Cell>
+                            <Table.Cell>Static test</Table.Cell>
+                        </Table.Row>
+
                     </Table.Body>
                 </Table>
                 "Text data"
