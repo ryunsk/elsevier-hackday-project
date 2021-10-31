@@ -30,10 +30,11 @@ class Routes[F[_] : Sync : ContextShift](blocker: Blocker, versionService: Versi
       case GET -> Root / "version" =>
         Ok(versionService.version)
 
-      case GET -> Root / "" =>
+      case GET -> Root / "users" =>
+        println("Get all data successful")
         Ok(schedulerService.userData.asJson)
 
-      case req@POST -> Root / "" =>
+      case req@POST -> Root / "users" =>
         req.decode[UserData] {
           x =>
             schedulerService.addUser(x)
