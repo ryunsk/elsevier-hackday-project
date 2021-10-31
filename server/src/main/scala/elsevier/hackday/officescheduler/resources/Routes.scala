@@ -39,6 +39,10 @@ class Routes[F[_] : Sync : ContextShift](blocker: Blocker, versionService: Versi
             schedulerService.addUser(x)
             Ok(schedulerService.userData.asJson)
         }
+
+      case POST -> Root / "reset" =>
+        schedulerService.resetData()
+        Ok("User data has been reset")
     }
   }
 

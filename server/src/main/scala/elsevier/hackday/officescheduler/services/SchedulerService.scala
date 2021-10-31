@@ -16,4 +16,12 @@ class SchedulerService {
     userData :+= input
     userData
   }
+
+  def resetData(): Unit = {
+    userData = Array(
+      UserData(LocalDate.parse("2021-10-28", formatter), Array("Steve", "Jon")),
+      UserData(LocalDate.parse("2021-10-29", formatter), Array("Annie", "Shane"))
+    )
+    userData
+  }
 }
