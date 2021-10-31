@@ -7,8 +7,13 @@ case class UserData(date: LocalDate, names: Array[String])
 
 class SchedulerService {
   val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-  val userData: Array[UserData] = Array(
+  var userData: Array[UserData] = Array(
     UserData(LocalDate.parse("2021-10-28", formatter), Array("Steve", "Jon")),
     UserData(LocalDate.parse("2021-10-29", formatter), Array("Annie", "Shane"))
   )
+
+  def addUser(input: UserData): Array[UserData] = {
+    userData :+= input
+    userData
+  }
 }

@@ -35,7 +35,9 @@ class Routes[F[_] : Sync : ContextShift](blocker: Blocker, versionService: Versi
 
       case req@POST -> Root / "" =>
         req.decode[UserData] {
-          x => Ok(x.toString)
+          x =>
+            schedulerService.addUser(x)
+            Ok(schedulerService.userData.asJson)
         }
     }
   }
