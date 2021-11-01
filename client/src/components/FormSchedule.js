@@ -33,13 +33,18 @@ class FormSchedule extends React.Component {
             // POST to add user with JSON Body, e.g. {"date":"2021-11-11","names":["Jane"]}
             const postData = { date: this.state.date, names: [this.state.name] }
             scheduler.post('/users', postData)
+            // Then do get again?
 
             this.props.onAddingName([[this.state.date, [this.state.name]]])
             Swal.fire(
                 this.state.name + ' has been added to the table.',
                 'Tip: You can press Space or Enter to close this window',
                 'success'
-            )
+            ).then(result => {
+                if (result.isConfirmed) {
+                    window.location.reload(false);
+                }
+            })
             event.preventDefault();
             this.setState({ name: '', date: '' })
         }
