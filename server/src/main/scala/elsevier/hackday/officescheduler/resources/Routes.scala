@@ -1,7 +1,6 @@
 package elsevier.hackday.officescheduler.resources
 
 import cats.effect.{Blocker, ContextShift, IO, Sync}
-import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion.User
 import elsevier.hackday.officescheduler.services.{SchedulerService, UserData, VersionService}
 import org.http4s._
 import org.http4s.dsl.Http4sDsl
