@@ -12,7 +12,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      serverVersion: null, clientVersion: null, resultDateAndName: [['2021-10-28', ['Steve', 'Jon']], ['2021-10-29', ['Annie', 'Shane']]]
+      serverVersion: null, clientVersion: null, resultDateAndName: [['2021-10-28', ['Steve', 'Jon', '(Static)']], ['2021-10-29', ['Annie', 'Shane', '(Static)']]]
     }
     this.handleNameAddition = this.handleNameAddition.bind(this)
   }
