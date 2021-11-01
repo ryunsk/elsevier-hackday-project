@@ -2,6 +2,7 @@ import React from 'react';
 import { Header, Form, Icon } from 'semantic-ui-react'
 import Swal from 'sweetalert2'
 import "react-datepicker/dist/react-datepicker.css";
+import scheduler from '../apis/Scheduler';
 
 class FormSchedule extends React.Component {
     constructor(props) {
@@ -29,6 +30,10 @@ class FormSchedule extends React.Component {
                 'error'
             )
         } else {
+            // POST to add user with JSON Body, e.g. {"date":"2021-11-11","names":["Jane"]}
+            const postData = { date: this.state.date, names: [this.state.name] }
+            scheduler.post('/users', postData)
+
             this.props.onAddingName([[this.state.date, [this.state.name]]])
             Swal.fire(
                 this.state.name + ' has been added to the table.',
@@ -39,6 +44,9 @@ class FormSchedule extends React.Component {
             this.setState({ name: '', date: '' })
         }
     }
+
+    // TODO: After Submit refresh page
+    // https://stackoverflow.com/questions/60824054/need-to-refresh-page-after-axios-call
 
     render() {
         return (
