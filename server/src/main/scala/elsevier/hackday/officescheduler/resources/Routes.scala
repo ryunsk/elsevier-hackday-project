@@ -4,17 +4,13 @@ import cats.effect.{Blocker, ContextShift, IO, Sync}
 import elsevier.hackday.officescheduler.services.{SchedulerService, UserData, VersionService}
 import org.http4s._
 import org.http4s.dsl.Http4sDsl
-import org.http4s.implicits.{http4sKleisliResponseSyntaxOptionT, http4sLiteralsSyntax}
+import org.http4s.implicits.http4sKleisliResponseSyntaxOptionT
 import org.http4s.server.Router
 import org.http4s.server.staticcontent.resourceServiceBuilder
 import org.http4s.circe._
 import io.circe.generic.auto._
 import io.circe.syntax.EncoderOps
-import org.http4s.FormDataDecoder.formEntityDecoder
 import org.http4s.circe.CirceEntityCodec.circeEntityDecoder
-
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 class Routes[F[_] : Sync : ContextShift](blocker: Blocker, versionService: VersionService, schedulerService: SchedulerService) {
 
@@ -30,8 +26,8 @@ class Routes[F[_] : Sync : ContextShift](blocker: Blocker, versionService: Versi
         Ok(versionService.version)
 
       case GET -> Root / "users" =>
-        println("Get all data successful")
-        Ok(schedulerService.userData.asJson)
+        println("===== Get all data successful =====")
+        Ok(schedulerService.getAllDatesAndUsers.asJson)
 
       case req@POST -> Root / "users" =>
         req.decode[UserData] {
