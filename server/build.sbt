@@ -31,6 +31,12 @@ libraryDependencies ++= Seq(
   // JSON
   "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.11.0",
 
+  // Doobie
+  "org.tpolecat" %% "doobie-core" % "0.10.0",
+  "org.tpolecat" %% "doobie-h2" % "0.10.0", // H2 driver 1.4.200 + type mappings.
+  "org.tpolecat" %% "doobie-hikari" % "0.10.0", // HikariCP transactor.
+  "org.tpolecat" %% "doobie-scalatest" % "0.10.0" % "test", // ScalaTest support for typechecking statements.
+
   // Testing
   "org.scalatest" %% "scalatest" % "3.1.0" % Test,
   "org.mockito" %% "mockito-scala" % "1.14.8" % Test,
