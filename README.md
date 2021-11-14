@@ -6,7 +6,7 @@
 # Deploying
 
 - `make deploy`
-- Browse to the [index.html](https://lit-oasis-11347.herokuapp.com/index.html) page on Heroku
+- Browse to the [index.html](https://els-hackday.herokuapp.com/index.html) page on Heroku
 
 # Limitations
 
