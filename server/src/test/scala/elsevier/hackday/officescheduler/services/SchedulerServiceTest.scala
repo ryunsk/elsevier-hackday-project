@@ -33,7 +33,11 @@ class SchedulerServiceTest extends AnyFlatSpec with Matchers {
   }
 
   it should "add user" in {
-
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+    val addedUserData = UserData(LocalDate.parse("2021-10-29", formatter), Array("NameHere"))
+    val lengthBefore = schedulerService.getAllDatesAndUsers.length
+    val addedUser = schedulerService.addUser(addedUserData)
+    addedUser.length shouldBe (lengthBefore + 1)
   }
 
 }
