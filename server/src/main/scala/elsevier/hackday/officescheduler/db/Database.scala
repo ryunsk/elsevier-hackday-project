@@ -1,14 +1,15 @@
 package elsevier.hackday.officescheduler.db
 
+import doobie._
 import cats.effect._
-import doobie.hikari._
-
+import doobie.hikari.HikariTransactor
+import doobie.h2._
 import scala.concurrent.ExecutionContext
 
 object Database {
-  def transactor(executionContext: ExecutionContext, blocker: Blocker)(implicit contextShift: ContextShift[IO]): Resource[IO, HikariTransactor[IO]] = {
-    HikariTransactor.newHikariTransactor[IO](
-      "org.h2.Driver", // driver classname
+  def transactor(executionContext: ExecutionContext, blocker: Blocker)(implicit contextShift: ContextShift[IO]): Resource[IO, H2Transactor[IO]] = {
+    H2Transactor.newH2Transactor[IO](
+      //      "org.h2.Driver", // driver classname
       "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1", // connect URL
       "sa", // username
       "", // password

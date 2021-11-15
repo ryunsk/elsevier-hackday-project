@@ -1,14 +1,16 @@
 package elsevier.hackday.officescheduler.services
 
 import cats.effect.IO
-import elsevier.hackday.officescheduler.db.UserRepository
+import doobie.implicits._
+import doobie.util.transactor.Transactor
 import fs2.Stream
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import elsevier.hackday.officescheduler.model.Model.{SingleUserData, UserData}
 
 
-class SchedulerService(repository: UserRepository) {
+class SchedulerService() {
+  // (transactor: Transactor[IO])
   val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
   val defaultData: Array[UserData] = Array(
     UserData(LocalDate.parse("2021-10-28", formatter), Array("Steve", "Jon")),
@@ -20,9 +22,9 @@ class SchedulerService(repository: UserRepository) {
     userData
   }
 
-  def getAllDatesAndUsersFromDB: Stream[IO, SingleUserData] = {
-    repository.getUsers
-  }
+  //  def getAllDatesAndUsersFromDB: Stream[IO, SingleUserData] = {
+  //    sql"SELECT date, name FROM USERS".query[SingleUserData].stream.transact(transactor)
+  //  }
 
   def addUser(input: UserData): Array[UserData] = {
     userData :+= input

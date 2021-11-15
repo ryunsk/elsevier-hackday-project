@@ -30,9 +30,9 @@ class Routes[F[_] : Sync : ContextShift](blocker: Blocker, versionService: Versi
         println("===== Get all data successful =====")
         Ok(schedulerService.getAllDatesAndUsers.asJson)
 
-      case GET -> Root / "usersdb" =>
-        println("===== Get all data from DB successful =====")
-        Ok(schedulerService.getAllDatesAndUsersFromDB.asJson)
+      //      case GET -> Root / "usersdb" =>
+      //        println("===== Get all data from DB successful =====")
+      //        Ok(schedulerService.getAllDatesAndUsersFromDB.asJson)
 
       case req@POST -> Root / "users" =>
         req.decode[UserData] {

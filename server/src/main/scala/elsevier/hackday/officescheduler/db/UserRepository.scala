@@ -6,8 +6,9 @@ import doobie.util.transactor.Transactor
 import elsevier.hackday.officescheduler.model.Model.SingleUserData
 import fs2.Stream
 
+// TODO: Delete or use it instead of in "SchedulerService"
 class UserRepository(transactor: Transactor[IO]) {
-  def getUsers: Stream[IO, SingleUserData] = {
-    sql"SELECT date, name FROM USERS".query[SingleUserData].stream.transact(transactor)
-  }
+  //  def getUsers: Stream[IO, SingleUserData] = {
+  //    sql"SELECT date, name FROM USERS".query[SingleUserData].stream.transact(transactor)
+  //  }
 }
