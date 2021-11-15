@@ -1,16 +1,17 @@
 package elsevier.hackday.officescheduler.resources
 
 import cats.effect.{Blocker, ContextShift, IO, Sync}
-import elsevier.hackday.officescheduler.services.{SchedulerService, UserData, VersionService}
+import elsevier.hackday.officescheduler.model.Model.UserData
+import elsevier.hackday.officescheduler.services.{SchedulerService, VersionService}
+import io.circe.generic.auto._
+import io.circe.syntax.EncoderOps
 import org.http4s._
+import org.http4s.circe.CirceEntityCodec.circeEntityDecoder
+import org.http4s.circe._
 import org.http4s.dsl.Http4sDsl
 import org.http4s.implicits.http4sKleisliResponseSyntaxOptionT
 import org.http4s.server.Router
 import org.http4s.server.staticcontent.resourceServiceBuilder
-import org.http4s.circe._
-import io.circe.generic.auto._
-import io.circe.syntax.EncoderOps
-import org.http4s.circe.CirceEntityCodec.circeEntityDecoder
 
 class Routes[F[_] : Sync : ContextShift](blocker: Blocker, versionService: VersionService, schedulerService: SchedulerService) {
 
@@ -28,6 +29,10 @@ class Routes[F[_] : Sync : ContextShift](blocker: Blocker, versionService: Versi
       case GET -> Root / "users" =>
         println("===== Get all data successful =====")
         Ok(schedulerService.getAllDatesAndUsers.asJson)
+
+      case GET -> Root / "usersdb" =>
+        println("===== Get all data from DB successful =====")
+        Ok(schedulerService.getAllDatesAndUsersFromDB.asJson)
 
       case req@POST -> Root / "users" =>
         req.decode[UserData] {
