@@ -2,8 +2,8 @@ package elsevier.hackday.officescheduler.services
 
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import elsevier.hackday.officescheduler.model.Model.{SingleUserData, UserData}
 
-case class UserData(date: LocalDate, names: Array[String])
 
 class SchedulerService {
   val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
