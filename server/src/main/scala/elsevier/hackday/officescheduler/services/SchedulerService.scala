@@ -10,10 +10,11 @@ import elsevier.hackday.officescheduler.model.Model.{SingleUserData, UserData}
 
 class SchedulerService(repository: UserRepository) {
   val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-  var userData: Array[UserData] = Array(
+  val defaultData: Array[UserData] = Array(
     UserData(LocalDate.parse("2021-10-28", formatter), Array("Steve", "Jon")),
     UserData(LocalDate.parse("2021-10-29", formatter), Array("Annie", "Shane"))
   )
+  var userData: Array[UserData] = defaultData
 
   def getAllDatesAndUsers: Array[UserData] = {
     userData
@@ -29,10 +30,6 @@ class SchedulerService(repository: UserRepository) {
   }
 
   def resetData(): Unit = {
-    userData = Array(
-      UserData(LocalDate.parse("2021-10-28", formatter), Array("Steve", "Jon")),
-      UserData(LocalDate.parse("2021-10-29", formatter), Array("Annie", "Shane"))
-    )
-    userData
+    userData = defaultData
   }
 }

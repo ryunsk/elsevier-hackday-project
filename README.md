@@ -19,7 +19,9 @@
 - Http4s for HTTP backend server
 - Doobie to connect the database
 - H2 in-memory database
+  - https://o7planning.org/11895/install-h2-database-and-use-h2-console
 
 ## TODO
 
 - Flyway for database versioning
+- Configuration file

@@ -1,7 +1,9 @@
 package elsevier.hackday.officescheduler.services
 
+import elsevier.hackday.officescheduler.model.Model.UserData
 import org.scalatest.flatspec._
 import org.scalatest.matchers.should.Matchers
+
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
