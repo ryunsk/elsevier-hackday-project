@@ -1,11 +1,6 @@
 package elsevier.hackday.officescheduler.resources
 
 import cats.effect._
-import doobie.ExecutionContexts
-import doobie.h2.H2Transactor
-import doobie.hikari.HikariTransactor
-import doobie.util.ExecutionContexts
-import elsevier.hackday.officescheduler.db.{Database, UserRepository}
 import elsevier.hackday.officescheduler.services.{SchedulerService, VersionService}
 import org.http4s.server.blaze._
 import org.http4s.server.middleware._

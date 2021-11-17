@@ -1,9 +1,5 @@
 package elsevier.hackday.officescheduler.services
 
-import cats.effect.IO
-import doobie.implicits._
-import doobie.util.transactor.Transactor
-import fs2.Stream
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import elsevier.hackday.officescheduler.model.Model.{SingleUserData, UserData}
@@ -21,10 +17,6 @@ class SchedulerService() {
   def getAllDatesAndUsers: Array[UserData] = {
     userData
   }
-
-  //  def getAllDatesAndUsersFromDB: Stream[IO, SingleUserData] = {
-  //    sql"SELECT date, name FROM USERS".query[SingleUserData].stream.transact(transactor)
-  //  }
 
   def addUser(input: UserData): Array[UserData] = {
     userData :+= input
