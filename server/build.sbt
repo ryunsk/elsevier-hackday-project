@@ -31,9 +31,9 @@ libraryDependencies ++= Seq(
   // JSON
   "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.11.0",
   // ScalikeJDBC
-  "org.scalikejdbc" %% "scalikejdbc" % "4.0.+",
-  "com.h2database" % "h2" % "1.4.+",
-  "ch.qos.logback" % "logback-classic" % "1.2.+",
+  "org.scalikejdbc" %% "scalikejdbc" % "3.5.0",
+  "com.h2database" % "h2" % "1.4.200",
+  "ch.qos.logback" % "logback-classic" % "1.2.3",
 
   // Testing
   "org.scalatest" %% "scalatest" % "3.1.0" % Test,
